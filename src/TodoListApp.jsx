@@ -28,6 +28,9 @@ function TodoListApp() {
   const [todos, setTodos] = useState(initTodos); //할일 목록 저장 state, 기본값: 빈 리스트
   const [search, setSearch] = useState("");
   const filteredTodos = todos.filter((todo) => todo.text.toLowerCase().includes(search.toLowerCase()));
+  
+  
+  const sortedTodos = filteredTodos.sort((a, b) => Number(Boolean(b.isPinned)) - Number(Boolean(a.isPinned)));
   //todos 변경될 때, 저장하자. useEffect(명령어, [변할값])
   useEffect(() => {
     //LocalStorage에 todos 저장하자
@@ -65,7 +68,7 @@ function TodoListApp() {
     <div className="todo">
       <TodoHeader />
       <TodoAdder addTodo={addTodo} search={search} setSearch={setSearch} />
-      <TodoList todos={filteredTodos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} pinTodo={pinTodo} />
+      <TodoList todos={sortedTodos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} pinTodo={pinTodo} />
     </div>
   );
 }
