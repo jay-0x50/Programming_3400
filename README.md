@@ -40,3 +40,5 @@ npm create vite@latest .
     <Link to="/"></Link>
     ```
 - `useNavigate()`
+
+- 3404 박재영  1-5	배경음악	★★★	useRef, <audio>, 재생/정지 상태
